@@ -25,7 +25,7 @@ public class SolvViewMain {
 			w.selectForGL();
 
 			// Set environment variable "SolvViewDebugOpenGL" to enable OpenGL debug messages (requires at least OpenGL 4.3+)
-			if (System.getenv("SolvViewDebugLWJGL") != null) {
+			if (System.getenv("SolvViewDebugOpenGL") != null) {
 				System.out.println("Debugging features enabled");
 				glEnable(GL_DEBUG_OUTPUT);
 				glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);

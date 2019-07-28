@@ -9,7 +9,9 @@ float distanceFunc(vec3 pos) {
     pos *= ilog2;
     vec3 gridDis = abs(pos - round(pos));
     float medianDis = 0.5 - max(min(gridDis.x,gridDis.y), min(max(gridDis.x,gridDis.y),gridDis.z));
-    return log2 * (max(medianDis, abs(pos.z) - 0.5) - GRID_WIDTH);
+    // The 0.5 is there to compensate for the fact that we just calculated euclidean distance and not
+    // intrinsic distance
+    return 0.5 * log2 * (max(medianDis, abs(pos.z) - 0.5) - GRID_WIDTH);
 }
 
 vec3 colorFunc(vec3 pos) {

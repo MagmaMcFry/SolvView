@@ -1,9 +1,5 @@
 #version 330
 
-void stepEucl(inout vec3 pos, inout vec3 dpos, float stepsize) {
-    pos += stepsize*dpos;
-}
-
 vec3 diff2(vec3 pos, vec3 dpos) {
     vec3 ddpos = vec3(
         -pos.z * dpos.x * dpos.z + dpos.y * dpos.z,
@@ -28,8 +24,4 @@ void stepNilMidpoint(inout vec3 pos, inout vec3 dpos, float stepsize) {
 
 void stepFunc(inout vec3 pos, inout vec3 dpos, float stepsize) {
     stepNilMidpoint(pos, dpos, stepsize);
-}
-
-float lengthFunc(vec3 pos, vec3 dir) {
-    return length(vec3(dir.x, dir.y - pos.z * dir.x, dir.z));
 }
