@@ -1,6 +1,6 @@
 # SolvView
 
-Visualizes the Riemannian manifolds Solv/Sol and Nil in real time using ray marching along geodesics.
+Visualizes the Riemannian manifolds Solv/Sol, Nil and SL(2,R) in real time using ray marching along geodesics.
 
 ## System requirements:
 
@@ -20,7 +20,7 @@ If SolvView does not launch on Mac, try running the command `java -XstartOnFirst
 - **W/A/S/D/Space/LShift** moves the camera
 - **I/K** increases/decreases the number of raymarching steps (a higher value increases visibility but decreases framerate)
 - **O/L** increases/decreases the maximum distance per raymarching step (a lower value improves the quality of geodesics but decreases visibility)
-- **M** switches between Solv and Nil
+- **M** switches between Solv, Nil and SL(2,R)
 - **Delete** quits the program
 
 ## Messing with the code:

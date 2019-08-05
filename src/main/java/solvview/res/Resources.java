@@ -10,4 +10,7 @@ public class Resources {
 
 	public final static StringResource NIL_SOURCE = new StringResource("nil.glsl");
 	public final static StringResource OBJECT_NIL_SOURCE = new StringResource("object_nil.glsl");
+
+	public static final StringResource SL2_SOURCE = new StringResource("sl2.glsl");
+	public final static StringResource OBJECT_SL2_SOURCE = new StringResource("object_sl2.glsl");
 }

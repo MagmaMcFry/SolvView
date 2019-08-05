@@ -7,7 +7,8 @@ import java.util.function.Supplier;
 
 public enum SpaceForm {
 	SOLV("Solv", Resources.SOLV_SOURCE, Resources.OBJECT_SOLV_SOURCE, SolvCamera::new),
-	NIL("Nil", Resources.NIL_SOURCE, Resources.OBJECT_NIL_SOURCE, NilCamera::new);
+	NIL("Nil", Resources.NIL_SOURCE, Resources.OBJECT_NIL_SOURCE, NilCamera::new),
+	SL2("SL(2,R)", Resources.SL2_SOURCE, Resources.OBJECT_SL2_SOURCE, SL2Camera::new);
 
 
 	private final String name;

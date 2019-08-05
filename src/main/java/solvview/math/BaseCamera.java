@@ -11,6 +11,7 @@ abstract public class BaseCamera implements Camera {
 		right = new Vec3(1, 0, 0);
 		up = new Vec3(0, 1, 0);
 		forwards = new Vec3(0, 0, 1);
+		repair();
 	}
 
 	@Override
