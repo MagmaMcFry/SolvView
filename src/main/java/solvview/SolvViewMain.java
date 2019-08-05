@@ -1,13 +1,13 @@
 package solvview;
 
-import solvview.core.glfw.Window;
-import solvview.core.start.Start;
-import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GLDebugMessageCallback;
 import org.lwjgl.system.Configuration;
+import solvview.core.glfw.Window;
+import solvview.core.start.Start;
 import solvview.math.SpaceForm;
 import solvview.state.SpaceFormViewState;
 
+import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL43.*;
 
@@ -16,10 +16,10 @@ public class SolvViewMain {
 		// Set environment variable "SolvViewDebugLWJGL" to enable LWJGL debug messages
 		Configuration.DEBUG.set(System.getenv("SolvViewDebugLWJGL") != null);
 		Start.start(() -> {
-			GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
-			GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 3);
-			GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);
-			GLFW.glfwWindowHint(org.lwjgl.glfw.GLFW.GLFW_OPENGL_FORWARD_COMPAT, GLFW.GLFW_TRUE);
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+			glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 
 			Window w = new Window(1024, 768, "SolvView");
 			w.selectForGL();

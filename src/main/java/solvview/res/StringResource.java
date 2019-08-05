@@ -10,7 +10,8 @@ import java.nio.file.Paths;
 /**
  * String resource representation.
  *
- * Loading a resource will load it from a file outside the jar (assuming it exists) or from the
+ * Each resource defaults to the contents of a file in the jar, but will be overridden
+ * by a file of the same name in the working directory.
  */
 public class StringResource {
 	private final String name;
