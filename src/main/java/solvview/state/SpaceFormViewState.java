@@ -4,7 +4,7 @@ import solvview.core.glfw.Window;
 import solvview.core.state.SimpleState;
 import org.lwjgl.glfw.GLFW;
 import solvview.core.gl.ShaderBuilder;
-import solvview.math.Camera;
+import solvview.math.camera.Camera;
 import solvview.math.SpaceForm;
 import solvview.res.Resources;
 

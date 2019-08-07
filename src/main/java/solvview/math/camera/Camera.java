@@ -1,4 +1,4 @@
-package solvview.math;
+package solvview.math.camera;
 
 public interface Camera {
 	void turnRight(float radians);

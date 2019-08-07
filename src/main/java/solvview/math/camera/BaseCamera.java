@@ -1,4 +1,6 @@
-package solvview.math;
+package solvview.math.camera;
+
+import solvview.math.Vec3;
 
 abstract public class BaseCamera implements Camera {
 	protected Vec3 pos;

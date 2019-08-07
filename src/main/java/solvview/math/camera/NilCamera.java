@@ -1,4 +1,6 @@
-package solvview.math;
+package solvview.math.camera;
+
+import solvview.math.Vec3;
 
 public class NilCamera extends BaseCamera {
 
