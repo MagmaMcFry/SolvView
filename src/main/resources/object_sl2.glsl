@@ -7,7 +7,7 @@ const float GRID_WIDTH = 0.03;
 
 float distanceFunc(vec3 pos) {
     pos *= ilog2;
-    pos.x -= pos.y; // Compensation for crooked metric in SL(2)
+    pos.y -= pos.x; // Compensation for crooked metric in SL(2)
     vec3 gridDis = abs(pos - round(pos));
     float medianDis = 0.5 - max(min(gridDis.x, gridDis.y), min(max(gridDis.x, gridDis.y), gridDis.z));
     // The 0.5 is there to compensate for the fact that we just calculated euclidean distance and not

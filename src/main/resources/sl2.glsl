@@ -3,9 +3,9 @@
 vec3 diff2(vec3 pos, vec3 dpos) {
     float ez = exp(pos.z);
     vec3 ddpos = vec3(
-    -3 * dpos.x * dpos.z + (2/ez) * dpos.y * dpos.z,
-    -ez * dpos.x * dpos.z + dpos.y * dpos.z,
-    (2*ez*ez) * dpos.x * dpos.x - (2*ez) * dpos.x * dpos.y
+    -3 * dpos.x * dpos.z + (1/ez) * dpos.y * dpos.z,
+    -2 * ez * dpos.x * dpos.z + dpos.y * dpos.z,
+    (2*ez*ez) * dpos.x * dpos.x - ez * dpos.x * dpos.y
     );
     return ddpos;
 }
