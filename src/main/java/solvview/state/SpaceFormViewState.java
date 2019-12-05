@@ -19,7 +19,7 @@ public class SpaceFormViewState extends SimpleState {
 	private static final float MOVE_SPEED = 0.02f;
 
 	private int vao;
-	private int program;
+	private int program = 0;
 	private int fovsLocation, startLocation, lookLocation, stepCountLocation, maxStepSizeLocation;
 
 	private int stepCount = 256;
@@ -27,6 +27,7 @@ public class SpaceFormViewState extends SimpleState {
 	private final Camera cam;
 
 	private final SpaceForm spaceForm;
+	private int spaceFormObjectID;
 	private boolean oneMoreSpace = false;
 
 	public SpaceFormViewState(Window w, SpaceForm spaceForm) {
@@ -37,12 +38,7 @@ public class SpaceFormViewState extends SimpleState {
 
 	@Override
 	public void init() {
-		ShaderBuilder sb = new ShaderBuilder(spaceForm.getName() + " Shader");
-		sb.addShader(GL_VERTEX_SHADER, Resources.VERTEX_SHADER_SOURCE.get());
-		sb.addShader(GL_FRAGMENT_SHADER, spaceForm.getShaderGeometrySource());
-		sb.addShader(GL_FRAGMENT_SHADER, spaceForm.getShaderObjectSource());
-		sb.addShader(GL_FRAGMENT_SHADER, Resources.FRAGMENT_SHADER_SOURCE.get());
-		program = sb.build();
+		buildShaderProgram();
 
 		fovsLocation = glGetUniformLocation(program, "fovs");
 		startLocation = glGetUniformLocation(program, "start");
@@ -67,6 +63,19 @@ public class SpaceFormViewState extends SimpleState {
 		glBufferData(GL_ARRAY_BUFFER, vertexPositions, GL_STATIC_DRAW);
 		glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
 		glEnableVertexAttribArray(0);
+	}
+
+	private void buildShaderProgram() {
+		if (program != 0) {
+			glDeleteProgram(program);
+			program = 0;
+		}
+		ShaderBuilder sb = new ShaderBuilder(spaceForm.getName() + " Shader");
+		sb.addShader(GL_VERTEX_SHADER, Resources.VERTEX_SHADER_SOURCE.get());
+		sb.addShader(GL_FRAGMENT_SHADER, spaceForm.getShaderGeometrySource());
+		sb.addShader(GL_FRAGMENT_SHADER, spaceForm.getShaderObjectSource(spaceFormObjectID));
+		sb.addShader(GL_FRAGMENT_SHADER, Resources.FRAGMENT_SHADER_SOURCE.get());
+		program = sb.build();
 	}
 
 	@Override
@@ -111,7 +120,7 @@ public class SpaceFormViewState extends SimpleState {
 
 		cam.repair();
 
-		window.setTitle("SolvView by MagmaMcFry - Space: " + spaceForm.getName() + " (toggle with M). Ray marching step count: " + stepCount + " (change with I/K). Max step size: " + maxStepSize + " (change with O/L). Controls: Up/Down/Left/Right/Q/E to rotate, W/A/S/D/Shift/Space to move");
+		window.setTitle("SolvView by MagmaMcFry - Space: " + spaceForm.getName() + " (M for next space, N for next mesh). Ray marching step count: " + stepCount + " (change with I/K). Max step size: " + maxStepSize + " (change with O/L). Controls: Up/Down/Left/Right/Q/E to rotate, W/A/S/D/Shift/Space to move");
 	}
 
 	@Override
@@ -155,6 +164,9 @@ public class SpaceFormViewState extends SimpleState {
 				oneMoreSpace = true;
 				stop();
 				break;
+			case GLFW.GLFW_KEY_N:
+				spaceFormObjectID = (spaceFormObjectID+1) % spaceForm.getShaderObjectCount();
+				buildShaderProgram();
 		}
 	}
 
